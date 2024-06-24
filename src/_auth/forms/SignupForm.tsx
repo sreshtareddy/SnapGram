@@ -15,6 +15,7 @@ import {Input} from "@/components/ui/input"
 import {SignupValidation_formSchema} from "@/lib/validation";
 import Loader from "@/components/shared/Loader";
 import {Link} from 'react-router-dom';
+import {createUserAccount} from '@/lib/appwrite/api';
 
 
 const SignupForm = () => {
@@ -35,9 +36,9 @@ const SignupForm = () => {
 
   //2. Define a submit handler - creating a user takes time, so we use await. It is an asynchronous func in the database
   async function onSubmit(values: z.infer<typeof SignupValidation_formSchema>){
-    //const newUser = await createUserAccount(values);
+    const newUser = await createUserAccount(values);
     //Do something with the form values
-    console.log(values)
+    console.log(newUser)
 
   }
 
